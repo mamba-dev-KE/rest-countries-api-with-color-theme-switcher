@@ -1,13 +1,95 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+	/* Dark Mode */
+	--dark-mode-blue: hsl(209, 23%, 22%);
+	--ultra-dark-mode-blue: hsl(207, 26%, 17%);
+	
+	/* Light Mode */
+	font-size: 10px;
+}
+
+body {
+	background-color: var(--dark-mode-blue);
+	color: white;
+	font-size: 1.6rem;
+
+	font-family: "Nunito Sans", sans-serif;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+.container {
+	width: 95%;
+	margin: 0 auto;
+}
+
+/* HEADER COMPONENT STYLES */
+
+.header {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1.5em;
+}
+
+/* .header::after {
+	content: "niko apa";
+	display: block;
+	border-bottom: 1px solid red;
+} */
+
+.logo,
+.dark-mode-icon {
+	font-size: 1.4rem;
+}
+
+/*COUNTRY COMPONENT STYLES */
+
+.country {
+	border-radius: 5px;
+	background-color: white;
+	color: black;
+	margin: 3em;
+}
+
+.country__flag {
+	border-radius: 5px 5px 0 0;
+	width: 100%;
+}
+
+.country__info {
+	padding: 2em;
+}
+
+.country__name {
+	font-size: 1.5rem;
+}
+
+.country__stats {
+	list-style: none;
+	margin-top: 1em;
+	font-size: 1.4rem;
+	line-height: 1.7;
+}
+
+.country__stats span {
+	font-weight: 600;
+}
+
+@media (min-width: 500px) {
+	.countries {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(33.5rem, 1fr));
+	}
 }
