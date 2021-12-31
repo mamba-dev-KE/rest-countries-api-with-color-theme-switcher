@@ -1,11 +1,12 @@
 import Header from "./components/Header";
 import Search from "./components/Search";
 import Country from "./components/Country";
+import Loading from "./components/Loading";
 import { useState, useEffect } from "react";
-import "./index.css";
 
 const App = () => {
 	const [countriesData, setCountries] = useState([]);
+	const [isDark, setIsDark] = useState(false);
 
 	useEffect(() => {
 		async function getCountries() {
@@ -17,13 +18,21 @@ const App = () => {
 		getCountries();
 	}, []);
 
+	const handleIsDark = () => {
+		setIsDark((prevState) => !prevState);
+	};
+
 	return (
-		<div className="container">
-			<Header />
-			<Search />
-			<main className="countries">
-				<Country countriesData={countriesData} />
-			</main>
+		<div className={isDark ? `dark-main container` : `container`}>
+			{countriesData.length > 0 ? (
+				<>
+					<Header isDark={isDark} handleIsDark={handleIsDark} />
+					<Search isDark={isDark} />
+					<Country countriesData={countriesData} isDark={isDark} />
+				</>
+			) : (
+				<Loading />
+			)}
 		</div>
 	);
 };
