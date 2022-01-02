@@ -26,8 +26,20 @@
 
 .dark-mode-icon {
 	font-weight: 600;
+	display: flex;
+	align-items: center;
+	padding: 0.5em;
+	transition: opacity 100ms ease-in-out;
 }
 
-.fa-moon {
-	transform: rotate(10deg);
+.dark-mode-icon:hover {
+	opacity: 0.8;
+}
+
+.fa-moon,
+.fa-sun {
+	transform: rotate(-35deg);
+	padding-right: 1em;
+	margin-bottom: 0.5em;
+	display: inline-block;
 }
