@@ -1,81 +1,72 @@
 import { useState } from "react";
-import CountryStats from "./CountryStats";
+import CountryItem from "./CountryItem";
+import Search from "./Search";
 
 const Country = ({ countriesData, isDark }) => {
-	const [search, setSearch] = useState("");
-	const [regionFilter, setRegionFilter] = useState("");
+	/* Unified state to manage both searching by name and filtering by region */
+	const [search, setSearch] = useState({
+		searchTerm: "",
+		filterTerm: "",
+	});
 
+	/* Function that handles the event from search and region select */
+	const handleChange = (event) => {
+		const { name, value } = event.target;
+		setSearch((prevState) => ({
+			...prevState,
+			[name]: value,
+		}));
+	};
+
+	/* Reset region filter logic */
+	const resetRegionFilter = () => {
+		setSearch((prevState) => ({
+			...prevState,
+			filterTerm: "",
+		}));
+	};
+
+	/* Logic for searching for countries by name and returning a new array  of countries that meet condition */
 	const filteredCountries = countriesData.filter((country) =>
-		country.name.toLowerCase().includes(search.toLowerCase())
+		country.name.toLowerCase().includes(search.searchTerm.toLowerCase())
 	);
-
+	//* Logic for filtering countries by region and returning a new array  of countries that meet condition */
 	const regionCountries = countriesData.filter((country) =>
-		country.region.toLowerCase().includes(regionFilter.toLowerCase())
+		country.region.toLowerCase().includes(search.filterTerm.toLowerCase())
 	);
 
-	const countryItems = filteredCountries.map((country) => {
+	/* Creating countries using the array of search items */
+	const searchedCountries = filteredCountries.map((country) => {
 		return (
-			<div
-				className={isDark ? `dark-country country` : `country`}
+			<CountryItem
+				isDark={isDark}
+				country={country}
 				key={country.numericCode}
-			>
-				<img className="country__flag" src={country.flags.svg} alt="flag" />
-				<div className="country__info">
-					<h4 className="country__name">{country.name}</h4>
-					<CountryStats country={country} />
-				</div>
-			</div>
+			/>
 		);
 	});
 
-	const countryItemsByRegion = regionCountries.map((country) => {
+	/* Creating countries using the array of search items */
+	const countriesByRegion = regionCountries.map((country) => {
 		return (
-			<div
-				className={isDark ? `dark-country country` : `country`}
+			<CountryItem
+				isDark={isDark}
+				country={country}
 				key={country.numericCode}
-			>
-				<img className="country__flag" src={country.flags.svg} alt="flag" />
-				<div className="country__info">
-					<h4 className="country__name">{country.name}</h4>
-					<CountryStats country={country} />
-				</div>
-			</div>
+			/>
 		);
 	});
-
-	const handleSearchChange = (event) => {
-		setSearch(event.target.value);
-	};
-
-	const handleRegionChange = (event) => {
-		setRegionFilter(event.target.value);
-	};
 
 	return (
 		<>
+			<Search
+				search={search}
+				handleChange={handleChange}
+				isDark={isDark}
+				resetRegionFilter={resetRegionFilter}
+			/>
 			<div className="countries" style={{ color: "white" }}>
-				<input
-					type="search"
-					name="searchTerm"
-					value={search.searchTerm}
-					onChange={handleSearchChange}
-					className={isDark ? "dark-search search" : "search"}
-					placeholder="Search for a country"
-				/>
-				<select
-					name="filter"
-					value={search.searchTerm}
-					onChange={handleRegionChange}
-					className={isDark ? "dark-filter filter" : "filter"}
-					placeholder="Filter by Region"
-				>
-					<option>Africa</option>
-					<option>America</option>
-					<option>Asia</option>
-					<option>Europe</option>
-					<option>Oceania</option>
-				</select>
-				{regionFilter === "" ? countryItems : countryItemsByRegion}
+				{search.filterTerm === "" ? searchedCountries : countriesByRegion}
 			</div>
 		</>
 	);

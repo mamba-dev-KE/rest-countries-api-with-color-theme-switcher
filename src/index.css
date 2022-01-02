@@ -59,41 +59,39 @@ img {
 
 /* SEARCH COMPONENT STYLES */
 
-.form-data {
+.search-container {
+	width: 90%;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	padding: 0 1em;
+	margin: 0 auto;
 }
-
 .search,
 .filter {
-	width: 100%;
 	min-height: 5rem;
 	padding: 1em;
 	border: none;
 	border-radius: 5px;
-	box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.54);
-	-webkit-box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.54);
-	-moz-box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.54);
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .search {
-	margin: 2.5em auto;
+	width: 38rem;
+	margin: 2.5em 0;
 }
 
-.search > option {
-	padding: 1em;
+.filter {
+	width: 18rem;
+}
+
+option {
+	margin-top: 10em;
+	border: 1px solid red;
 }
 
 .fa-search {
 	color: black;
-}
-
-.filter {
-	width: 60%;
-	min-height: 5rem;
-	margin-right: auto;
 }
 
 .logo,
@@ -193,6 +191,10 @@ img {
 
 .dark-filter > option {
 	color: white;
+}
+
+.countries {
+	padding-bottom: 1em;
 }
 @media (min-width: 500px) {
 	.countries {
