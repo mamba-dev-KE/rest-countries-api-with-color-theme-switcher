@@ -1,3 +1,5 @@
+import "./Header.css";
+
 const Header = ({ isDark, handleIsDark }) => {
 	return (
 		<header className={isDark ? `dark-header header` : `header`}>

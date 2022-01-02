@@ -1,4 +1,5 @@
-import loadingIcon from "../images/reload-outline.svg";
+import loadingIcon from "../../images/reload-outline.svg";
+import "./Loading.css";
 
 const Loading = () => {
 	return (

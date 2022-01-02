@@ -1,16 +1,8 @@
-import Header from "./components/Header";
-import Country from "./components/Country";
-import Loading from "./components/Loading";
-import CountryDetails from "./components/CountryDetails";
+import Header from "./components/Header/Header";
+import Country from "./components/Country/Country";
+import Loading from "./components/Loading/Loading";
 
 import { useState, useEffect } from "react";
-// import {
-// 	BrowserRouter as Router,
-// 	Switch,
-// 	Route,
-// 	Link,
-// 	Routes,
-// } from "react-router-dom";
 
 const App = () => {
 	const [countriesData, setCountries] = useState([]);
