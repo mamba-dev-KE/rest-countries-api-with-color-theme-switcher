@@ -26,6 +26,7 @@ body {
 
 main {
 	background-color: var(--ultra-light-gray);
+	min-height: 100vh;
 }
 
 .dark-content {
