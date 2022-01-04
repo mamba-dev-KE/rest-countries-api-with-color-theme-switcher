@@ -23,16 +23,20 @@ const App = () => {
 	};
 
 	return (
-		<div className={isDark ? `dark-main container` : `container`}>
-			{countriesData.length > 0 ? (
-				<>
-					<Header isDark={isDark} handleIsDark={handleIsDark} />
-					<Country countriesData={countriesData} isDark={isDark} />
-				</>
-			) : (
-				<Loading />
-			)}
-		</div>
+		<>
+			<Header isDark={isDark} handleIsDark={handleIsDark} />
+			<main className={isDark ? `dark-content main` : `main`}>
+				<div className={isDark ? `dark-container container` : `container`}>
+					{countriesData.length > 0 ? (
+						<>
+							<Country countriesData={countriesData} isDark={isDark} />
+						</>
+					) : (
+						<Loading />
+					)}
+				</div>
+			</main>
+		</>
 	);
 };
 

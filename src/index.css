@@ -10,7 +10,6 @@
 	/* Dark Mode */
 	--dark-mode-blue: hsl(209, 23%, 22%);
 	--ultra-dark-mode-blue: hsl(207, 26%, 17%);
-
 	/* Light Mode */
 	--light-mode-blue: hsl(200, 15%, 8%);
 	--light-mode-dark-gray: hsl(0, 0%, 52%);
@@ -20,10 +19,17 @@
 }
 
 body {
-	background-color: var(--ultra-light-gray);
 	color: white;
 	font-size: 1.6rem;
 	font-family: "Nunito Sans", sans-serif;
+}
+
+main {
+	background-color: var(--ultra-light-gray);
+}
+
+.dark-content {
+	background-color: var(--ultra-dark-mode-blue);
 }
 
 img {
@@ -32,11 +38,11 @@ img {
 }
 
 .container {
-	/* width: 95%; */
 	margin: 0 auto;
 	max-width: 200rem;
 }
 
-.dark-main {
+.dark-container {
 	background-color: var(--ultra-dark-mode-blue);
+	color: green;
 }

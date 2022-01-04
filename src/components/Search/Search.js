@@ -15,22 +15,33 @@ const Search = ({ search, handleChange, isDark, resetRegionFilter }) => {
 					placeholder="Search for a country..."
 				/>
 			</div>
-			<select
-				name="filterTerm"
-				value={search.filterTerm}
-				onChange={handleChange}
-				className={isDark ? "dark-filter filter" : "filter"}
-			>
-				<option className="option">Filter by region</option>
-				<option>Africa</option>
-				<option>America</option>
-				<option>Asia</option>
-				<option>Europe</option>
-				<option>Oceania</option>
-			</select>
-			{search.filterTerm && (
-				<button onClick={resetRegionFilter}> Clear Region Filter</button>
-			)}
+			<div class="filter-group">
+				<select
+					name="filterTerm"
+					value={search.filterTerm}
+					onChange={handleChange}
+					className={isDark ? "dark-filter filter" : "filter"}
+				>
+					<option className="option">Filter by Region</option>
+					<option>Africa</option>
+					<option>America</option>
+					<option>Asia</option>
+					<option>Europe</option>
+					<option>Oceania</option>
+				</select>
+				{search.filterTerm && (
+					<button
+						onClick={resetRegionFilter}
+						className={
+							isDark
+								? "clear-filter-btn dark-clear-filter-btn"
+								: "clear-filter-btn"
+						}
+					>
+						Clear Region Filter
+					</button>
+				)}
+			</div>
 		</div>
 	);
 };

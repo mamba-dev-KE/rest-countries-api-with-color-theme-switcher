@@ -1,13 +1,20 @@
-.header {
+.header-container {
+	max-width: 200rem;
+	margin: 0 auto;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
+}
+
+.header {
 	padding: 1.5em;
 	background-color: var(--white);
 	-webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-	color: black;
+	color: var(--light-mode-blue);
+	transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+	width: 100%;
 }
 
 .dark-mode-icon:hover {

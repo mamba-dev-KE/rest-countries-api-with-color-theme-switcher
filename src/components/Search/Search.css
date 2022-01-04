@@ -8,30 +8,33 @@
 .search,
 .filter {
 	border: none;
+	outline: none;
 }
 
 .search {
 	width: 31rem;
 	background: none;
 	outline: none;
+	color: var(--light-mode-dark-gray);
 }
 
 ::placeholder {
-	color: #c8c8c8;
+	color: var(--light-mode-dark-gray);
 }
 
 ::-webkit-input-placeholder {
-	color: #c8c8c8;
+	color: var(--light-mode-dark-gray);
 }
 
 :-ms-input-placeholder {
-	color: #c8c8c8;
+	color: var(--light-mode-dark-gray);
 }
 
 .filter {
 	width: 18rem;
 	margin-top: 3.5em;
 	min-height: 5rem;
+	color: var(--light-mode-blue);
 }
 
 .filter,
@@ -60,6 +63,11 @@
 
 .dark-filter {
 	background-color: var(--dark-mode-blue);
+	color: white;
+}
+
+.dark-search {
+	color: white;
 }
 
 .dark-filter > option {
@@ -68,4 +76,46 @@
 
 .dark-search-item {
 	background-color: var(--dark-mode-blue);
+}
+
+.clear-filter-btn {
+	width: 15rem;
+	margin: 2em 0 0 1em;
+	padding: 1em 2em;
+	font-size: 1.1rem;
+	background-color: white;
+	border-radius: 5px;
+	border: none;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dark-clear-filter-btn {
+	background: var(--dark-mode-blue);
+	color: white;
+}
+
+.clear-filter-btn:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+@media (min-width: 665px) {
+	.search-container {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		justify-content: start;
+		align-items: end;
+		width: 95%;
+	}
+
+	.search-item {
+		grid-column: 1 / span 1;
+	}
+
+	.filter-group {
+		grid-column: -1 / span 1;
+		justify-self: center;
+	}
 }
