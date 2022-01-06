@@ -23,27 +23,31 @@ const CountryDetails = ({ isDark }) => {
 		// });
 
 		return (
-			<section key={item.name}>
+			<section className="country-details-section" key={item.name}>
 				<img className="country-details-flag" src={item.flags.svg} alt="" />
-				<div className="country-info">
-					<h4 className="country-details-name">{item.name}</h4>
-					<ul className="country-details-main">
-						<li>
-							<span>Native Name:</span> {item.nativeName}
-						</li>
-						<li>
-							<span>Population:</span> {item.population.toLocaleString()}
-						</li>
-						<li>
-							<span>Region:</span> {item.region}
-						</li>
-						<li>
-							<span>Sub Region:</span> {item.subregion}
-						</li>
-						<li>
-							<span>Capital:</span> {item.capital}
-						</li>
-					</ul>
+				<div
+					className={isDark ? "dark-country-info country-info" : "country-info"}
+				>
+					<div className="wrapper">
+						<h4 className="country-details-name">{item.name}</h4>
+						<ul className="country-details-main">
+							<li>
+								<span>Native Name:</span> {item.nativeName}
+							</li>
+							<li>
+								<span>Population:</span> {item.population.toLocaleString()}
+							</li>
+							<li>
+								<span>Region:</span> {item.region}
+							</li>
+							<li>
+								<span>Sub Region:</span> {item.subregion}
+							</li>
+							<li>
+								<span>Capital:</span> {item.capital}
+							</li>
+						</ul>
+					</div>
 					<ul className="country-details-other">
 						<li>
 							<span>Top Level Domain:</span> {item.topLevelDomain}
@@ -55,12 +59,12 @@ const CountryDetails = ({ isDark }) => {
 							<span>Languages:</span> {languages.join(", ")}
 						</li>
 					</ul>
-					<div className="border-countries">
-						<span>{}</span>
-						<span>Germany</span>
-						<span>Netherlands</span>
-					</div>
 				</div>
+				{/* <div className="border-countries">
+					<span>{}</span>
+					<span>Germany</span>
+					<span>Netherlands</span>
+				</div> */}
 			</section>
 		);
 	});
