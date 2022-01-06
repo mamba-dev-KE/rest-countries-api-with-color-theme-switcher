@@ -6,8 +6,7 @@
 	color: var(--light-mode-blue);
 	margin: 3em;
 	max-width: 40rem;
-	/* -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); */
-	/* transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1); */
+	transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);	
 }
 
 .country::after {
@@ -22,12 +21,10 @@
 	box-shadow: 0 5px 15px rgba(15, 15, 15, 0.3);
 	opacity: 0;
 
-	-webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
-	transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+		transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .country:hover {
-	-webkit-transform: scale(1.25, 1.25);
 	transform: translateY(10px);
 	cursor: pointer;
 }
