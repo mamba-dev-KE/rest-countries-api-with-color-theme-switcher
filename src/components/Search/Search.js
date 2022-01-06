@@ -15,7 +15,7 @@ const Search = ({ search, handleChange, isDark, resetRegionFilter }) => {
 					placeholder="Search for a country..."
 				/>
 			</div>
-			<div class="filter-group">
+			<div className="filter-group">
 				<select
 					name="filterTerm"
 					value={search.filterTerm}
