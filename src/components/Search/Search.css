@@ -36,13 +36,14 @@
 	margin-top: 3.5em;
 	min-height: 5rem;
 	color: var(--light-mode-blue);
+	background-color: white;
 }
 
 .filter,
 .search-item {
 	border-radius: 5px;
 	padding: 1em;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);	
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .search-item {
@@ -85,7 +86,7 @@
 	background-color: white;
 	border-radius: 5px;
 	border: none;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);	
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .dark-clear-filter-btn {

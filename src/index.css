@@ -59,14 +59,14 @@ a {
 	position: fixed;
 	bottom: 0;
 	right: 0;
-	margin-bottom: 0rem;
+	margin-bottom: 1em;
 	margin-right: 5em;
 	z-index: 50;
 	animation: scroll-up 1.5s infinite;
 }
 
 .scroll-up .fas {
-	font-size: 6rem;
+	font-size: 5.5rem;
 	color: black;
 }
 

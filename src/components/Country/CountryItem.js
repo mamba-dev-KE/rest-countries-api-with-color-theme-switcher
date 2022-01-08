@@ -10,7 +10,11 @@ const CountryItem = ({ isDark, country }) => {
 			className={isDark ? `dark-country country` : `country`}
 			onClick={() => navigate(`/country/${country.name.toLowerCase()}`)}
 		>
-			<img className="country__flag" src={country.flags.svg} alt="flag" />
+			<img
+				className="country__flag"
+				src={country.flags.svg}
+				alt={country.name}
+			/>
 			<div className="country__info">
 				<h4 className="country__name">{country.name}</h4>
 				<CountryStats country={country} />
