@@ -9,11 +9,13 @@ const CountryDetails = ({ isDark }) => {
 	const { id } = useParams();
 
 	useEffect(() => {
-		axios.get(`https://restcountries.com/v2/name/${id}`).then((res) => {
-			const data = res.data;
-			setCurrentCountry(data);
-			console.log(data);
-		});
+		axios
+			.get(`https://restcountries.com/v2/name/${id}?fullText=true`)
+			.then((res) => {
+				const data = res.data;
+				setCurrentCountry(data);
+				console.log(data);
+			});
 	}, [id]);
 
 	const countryDisplay = currentCountry.map((item) => {
