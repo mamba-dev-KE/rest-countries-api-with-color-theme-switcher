@@ -37,7 +37,12 @@ const App = () => {
 							></Route>
 							<Route
 								path="/country/:id"
-								element={<CountryDetails isDark={isDark} />}
+								element={
+									<CountryDetails
+										countriesData={countriesData}
+										isDark={isDark}
+									/>
+								}
 							/>
 							<Route path="*" element={<NotFound isDark={isDark} />} />
 						</Routes>

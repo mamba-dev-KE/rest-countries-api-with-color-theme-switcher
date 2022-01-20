@@ -42,6 +42,7 @@
 
 .country__info {
 	padding: 2em;
+	border: 1px solid red;
 }
 
 .dark-country-info {
@@ -107,6 +108,38 @@
 
 .country-details-flag {
 	object-fit: contain;
+}
+
+.border-countries {
+	margin-top: 1.5em;
+	border: 1px solid greenyellow;
+	/* width: 50rem; */
+}
+
+.border-btn {
+	/* flex: 1; */
+	border: none;
+	outline: none;
+	padding: 0.5em 0.5em;
+	background: transparent;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+	font-size: 1.2rem;
+	font-weight: 400;
+	color: var(--light-mode-dark-gray);
+	box-shadow: 1px 2px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.border-btn:hover {
+	cursor: pointer;
+	opacity: 0.8;
+}
+
+.btn-group {
+	/* display: flex; */
+	display: grid;
+	grid-gap: 1rem;
+	grid-template-columns: repeat(auto-fit, minmax(5rem, 12rem));
+	margin-top: 1em;
 }
 
 @media (min-width: 500px) {
