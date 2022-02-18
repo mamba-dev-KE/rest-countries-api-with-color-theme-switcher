@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 import CountryStats from "./CountryStats";
 import { useNavigate } from "react-router-dom";
@@ -6,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 const CountryItem = ({ isDark, country }) => {
 	const navigate = useNavigate();
 	return (
-		<div
+		<motion.div
+			animate={{y: 100}}
 			className={isDark ? `dark-country country` : `country`}
 			onClick={() => navigate(`/country/${country.name.toLowerCase()}`)}
 		>
@@ -19,7 +21,7 @@ const CountryItem = ({ isDark, country }) => {
 				<h4 className="country__name">{country.name}</h4>
 				<CountryStats country={country} />
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 
