@@ -8,9 +8,9 @@ const CountryItem = ({ isDark, country }) => {
 	const navigate = useNavigate();
 	return (
 		<motion.div
-			animate={{ y: 20, opacity: 1, rotate: 0, translateX: 0 }}
-      		initial={{ opacity: 0, rotate: 0, translateX: 10 }}
-      		exit={{ y: 500, opacity: 0, translateX: 10 }}
+			animate={{ y: 20, opacity: 1, }}
+      		initial={{ opacity: 0, }}
+      		exit={{ y: 500, opacity: 0, }}
       		transition={{ duration: 0.2 }}
       		layout
 			className={isDark ? `dark-country country` : `country`}
