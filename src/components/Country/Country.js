@@ -3,6 +3,7 @@ import "./Country.css";
 import Search from "../Search/Search";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Country = ({ countriesData, isDark }) => {
 	/* Unified state to manage both searching by name and filtering by region */
@@ -67,9 +68,11 @@ const Country = ({ countriesData, isDark }) => {
 				isDark={isDark}
 				resetRegionFilter={resetRegionFilter}
 			/>
-			<div className="countries">
+			<motion.div layout className="countries">
+				<AnimatePresence>
 				{search.filterTerm === "" ? searchedCountries : countriesByRegion}
-			</div>
+				</AnimatePresence>
+			</motion.div>
 		</>
 	);
 };
