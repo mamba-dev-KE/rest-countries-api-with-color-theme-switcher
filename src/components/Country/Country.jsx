@@ -1,11 +1,10 @@
-import CountryItem from "./CountryItem";
+import { Search, CountryItem } from "../../components";
 import "./Country.css";
-import Search from "../Search/Search";
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Country = ({ countriesData, isDark }) => {
+const Country = ({ data, isDark }) => {
   /* Unified state to manage both searching by name and filtering by region */
   const [search, setSearch] = useState({
     searchTerm: "",
@@ -30,16 +29,16 @@ const Country = ({ countriesData, isDark }) => {
   };
 
   /* Logic for searching for countries by name and returning a new array  of countries that meet condition */
-  const filteredCountries = countriesData.filter((country) =>
+  const filteredCountries = data?.filter((country) =>
     country.name.toLowerCase().includes(search.searchTerm.toLowerCase())
   );
   //* Logic for filtering countries by region and returning a new array  of countries that meet condition */
-  const regionCountries = countriesData.filter((country) =>
+  const regionCountries = data?.filter((country) =>
     country.region.toLowerCase().includes(search.filterTerm.toLowerCase())
   );
 
   /* Creating countries using the array of search items */
-  const searchedCountries = filteredCountries.map((country) => {
+  const searchedCountries = filteredCountries?.map((country) => {
     return (
       <CountryItem
         isDark={isDark}
@@ -50,7 +49,7 @@ const Country = ({ countriesData, isDark }) => {
   });
 
   /* Creating countries using the array of search items */
-  const countriesByRegion = regionCountries.map((country) => {
+  const countriesByRegion = regionCountries?.map((country) => {
     return (
       <CountryItem
         isDark={isDark}

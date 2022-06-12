@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-import CountryStats from "./CountryStats";
+import CountryStats from "./CountryStats.jsx";
 import { useNavigate } from "react-router-dom";
 
 const CountryItem = ({ isDark, country }) => {
