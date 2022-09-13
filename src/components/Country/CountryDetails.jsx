@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-import { Link, useParams } from "react-router-dom";
-import Back from "../Back/Back";
+import { useContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link, useParams } from 'react-router-dom';
+import { ColorSchemeContext } from '../../context/context';
+import Back from '../Back/Back';
+import { useCountries } from '../../hooks';
 
-const CountryDetails = ({ data, isDark }) => {
+const CountryDetails = () => {
   const [currentCountry, setCurrentCountry] = useState([]);
-
+  const { isDark } = useContext(ColorSchemeContext);
+  const { data } = useCountries();
   const { id } = useParams();
 
   useEffect(() => {
@@ -42,7 +45,7 @@ const CountryDetails = ({ data, isDark }) => {
           <img className="country-details-flag" src={item?.flags.svg} alt="" />
           <div
             className={
-              isDark ? "dark-country-info country-info" : "country-info"
+              isDark ? 'dark-country-info country-info' : 'country-info'
             }
           >
             <div className="wrapper">
@@ -73,7 +76,7 @@ const CountryDetails = ({ data, isDark }) => {
                 <span>Currencies:</span> {item?.currencies[0].name}
               </li>
               <li>
-                <span>Languages:</span> {languages?.join(", ")}
+                <span>Languages:</span> {languages?.join(', ')}
               </li>
             </ul>
           </div>

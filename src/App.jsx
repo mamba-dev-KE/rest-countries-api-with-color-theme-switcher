@@ -1,20 +1,16 @@
-import { Header, Country, CountryDetails } from "./components";
-import NotFound from "./pages/NotFound/NotFound";
-
-import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
-import { useCountries } from "./hooks";
+import { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useCountries } from './hooks';
+import { ColorSchemeContext } from './context/context';
+import { Header, Country, CountryDetails } from './components';
+import NotFound from './pages/NotFound/NotFound';
 
 const App = () => {
   const { isLoading, error, data } = useCountries();
-  const [isDark, setIsDark] = useState(false);
-
-  const handleIsDark = () => {
-    setIsDark((prevState) => !prevState);
-  };
+  const { isDark } = useContext(ColorSchemeContext);
 
   if (isLoading) {
-    return <div style={{ textAlign: "center" }}>loading...</div>;
+    return <div style={{ textAlign: 'center' }}>loading...</div>;
   }
 
   if (error) {
@@ -23,19 +19,13 @@ const App = () => {
 
   return (
     <>
-      <Header isDark={isDark} handleIsDark={handleIsDark} />
+      <Header />
       <main id="main" className={isDark ? `dark-content main` : `main`}>
         <div className={isDark ? `dark-container container` : `container`}>
           <Routes>
-            <Route
-              path="/"
-              element={<Country data={data} isDark={isDark} />}
-            ></Route>
-            <Route
-              path="/country/:id"
-              element={<CountryDetails data={data} isDark={isDark} />}
-            />
-            <Route path="*" element={<NotFound isDark={isDark} />} />
+            <Route path="/" element={<Country />} />
+            <Route path="/country/:id" element={<CountryDetails />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <a href="#main" className="scroll-up">

@@ -1,17 +1,20 @@
-import { Search, CountryItem } from "../../components";
-import "./Country.css";
+import { Search, CountryItem } from '../../components';
+import './Country.css';
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useContext, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ColorSchemeContext } from '../../context/context';
+import { useCountries } from '../../hooks';
 
-const Country = ({ data, isDark }) => {
-  /* Unified state to manage both searching by name and filtering by region */
+const Country = () => {
   const [search, setSearch] = useState({
-    searchTerm: "",
-    filterTerm: "",
+    searchTerm: '',
+    filterTerm: '',
   });
 
-  /* Function that handles the event from search and region select */
+  const { isDark } = useContext(ColorSchemeContext);
+  const { data } = useCountries();
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setSearch((prevState) => ({
@@ -20,35 +23,24 @@ const Country = ({ data, isDark }) => {
     }));
   };
 
-  /* Reset region filter logic */
   const resetRegionFilter = () => {
     setSearch((prevState) => ({
       ...prevState,
-      filterTerm: "",
+      filterTerm: '',
     }));
   };
 
-  /* Logic for searching for countries by name and returning a new array  of countries that meet condition */
   const filteredCountries = data?.filter((country) =>
     country.name.toLowerCase().includes(search.searchTerm.toLowerCase())
   );
-  //* Logic for filtering countries by region and returning a new array  of countries that meet condition */
   const regionCountries = data?.filter((country) =>
     country.region.toLowerCase().includes(search.filterTerm.toLowerCase())
   );
 
-  /* Creating countries using the array of search items */
   const searchedCountries = filteredCountries?.map((country) => {
-    return (
-      <CountryItem
-        isDark={isDark}
-        country={country}
-        key={country.numericCode}
-      />
-    );
+    return <CountryItem country={country} key={country.numericCode} />;
   });
 
-  /* Creating countries using the array of search items */
   const countriesByRegion = regionCountries?.map((country) => {
     return (
       <CountryItem
@@ -69,7 +61,7 @@ const Country = ({ data, isDark }) => {
       />
       <motion.div layout className="countries">
         <AnimatePresence>
-          {search.filterTerm === "" ? searchedCountries : countriesByRegion}
+          {search.filterTerm === '' ? searchedCountries : countriesByRegion}
         </AnimatePresence>
       </motion.div>
     </>

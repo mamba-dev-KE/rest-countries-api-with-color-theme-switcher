@@ -1,6 +1,10 @@
-import "./Header.css";
+import { useContext } from 'react';
+import { ColorSchemeContext } from '../../context/context';
+import './Header.css';
 
-const Header = ({ isDark, handleIsDark }) => {
+const Header = () => {
+  const { isDark, handleIsDark } = useContext(ColorSchemeContext);
+
   return (
     <header className={isDark ? `dark-header header` : `header`}>
       <div className="header-container">
