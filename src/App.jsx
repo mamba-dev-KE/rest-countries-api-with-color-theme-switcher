@@ -6,16 +6,22 @@ import { Header, Country, CountryDetails } from './components';
 import NotFound from './pages/NotFound/NotFound';
 
 const App = () => {
-  const { isLoading, error, data } = useCountries();
+  const { isLoading, isError, error } = useCountries();
   const { isDark } = useContext(ColorSchemeContext);
 
-  if (isLoading) {
-    return <div style={{ textAlign: 'center' }}>loading...</div>;
-  }
+  if (isLoading)
+    return (
+      <div style={{ textAlign: 'center', fontSize: '2rem', color: 'tomato' }}>
+        loading...
+      </div>
+    );
 
-  if (error) {
-    return <div>error...</div>;
-  }
+  if (isError)
+    return (
+      <div style={{ textAlign: 'center', fontSize: '2rem', color: 'red' }}>
+        {error.message}
+      </div>
+    );
 
   return (
     <>

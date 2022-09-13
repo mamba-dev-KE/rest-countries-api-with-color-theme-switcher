@@ -33,22 +33,17 @@ const Country = () => {
   const filteredCountries = data?.filter((country) =>
     country.name.toLowerCase().includes(search.searchTerm.toLowerCase())
   );
+
   const regionCountries = data?.filter((country) =>
     country.region.toLowerCase().includes(search.filterTerm.toLowerCase())
   );
-
+  
   const searchedCountries = filteredCountries?.map((country) => {
     return <CountryItem country={country} key={country.numericCode} />;
   });
 
   const countriesByRegion = regionCountries?.map((country) => {
-    return (
-      <CountryItem
-        isDark={isDark}
-        country={country}
-        key={country.numericCode}
-      />
-    );
+    return <CountryItem country={country} />;
   });
 
   return (
