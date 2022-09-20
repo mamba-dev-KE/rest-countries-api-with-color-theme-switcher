@@ -2,8 +2,7 @@ import { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { useCountries } from './hooks';
 import { ColorSchemeContext } from './context/context';
-import { Header, Country, CountryDetails } from './components';
-import NotFound from './pages/NotFound/NotFound';
+import { Header, Country, CountryDetails, NotFound } from './components';
 
 const App = () => {
   const { isLoading, isError, error } = useCountries();
@@ -11,16 +10,20 @@ const App = () => {
 
   if (isLoading)
     return (
-      <div style={{ textAlign: 'center', fontSize: '2rem', color: 'tomato' }}>
-        loading...
-      </div>
+      <main id="main" className={isDark ? `dark-content main` : `main`}>
+        <div style={{ textAlign: 'center', fontSize: '2rem', color: 'tomato' }}>
+          loading...
+        </div>
+      </main>
     );
 
   if (isError)
     return (
-      <div style={{ textAlign: 'center', fontSize: '2rem', color: 'red' }}>
-        {error.message}
-      </div>
+      <main id="main" className={isDark ? `dark-content main` : `main`}>
+        <div style={{ textAlign: 'center', fontSize: '2rem', color: 'red' }}>
+          {error.message}
+        </div>
+      </main>
     );
 
   return (
