@@ -14,7 +14,6 @@ const Country = () => {
     filterTerm: '',
   });
 
-  const { isDark } = useDarkMode();
   const { data: countries } = useCountries();
 
   const handleChange = (event: ChangeEvent | any) => {

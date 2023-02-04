@@ -7,6 +7,7 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,35 +20,37 @@ const router = createBrowserRouter(
 );
 
 const App = () => {
-  const { isLoading, error } = useCountries();
+  // const { isLoading, error } = useCountries();
   const { isDark } = useContext(ColorSchemeContext);
 
-  if (isLoading)
-    return (
-      <main id="main" className={isDark ? `dark-content main` : `main`}>
-        <div style={{ textAlign: 'center', fontSize: '2rem', color: 'tomato' }}>
-          loading...
-        </div>
-      </main>
-    );
+  // if (isLoading)
+  //   return (
+  //     <main id="main" className={isDark ? `dark-content main` : `main`}>
+  //       <div style={{ textAlign: 'center', fontSize: '2rem', color: 'tomato' }}>
+  //         loading...
+  //       </div>
+  //     </main>
+  //   );
 
-  if (error)
-    return (
-      <main id="main" className={isDark ? `dark-content main` : `main`}>
-        <div style={{ textAlign: 'center', fontSize: '2rem', color: 'red' }}>
-          {error.message}
-        </div>
-      </main>
-    );
+  // if (error)
+  //   return (
+  //     <main id="main" className={isDark ? `dark-content main` : `main`}>
+  //       <div style={{ textAlign: 'center', fontSize: '2rem', color: 'red' }}>
+  //         {error.message}
+  //       </div>
+  //     </main>
+  //   );
 
   return (
     <>
       <Header />
       <main id="main" className={isDark ? `dark-content main` : `main`}>
         <div className={isDark ? `dark-container container` : `container`}>
-          <Suspense fallback={<p>Loading.......</p>}>
-            <RouterProvider router={router} />
-          </Suspense>
+          <ErrorBoundary fallback={<p>An error occurred...</p>}>
+            <Suspense fallback={<p>Loading.......</p>}>
+              <RouterProvider router={router} />
+            </Suspense>
+          </ErrorBoundary>
         </div>
         <a href="#main" className="scroll-up">
           <i
