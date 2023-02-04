@@ -1,14 +1,14 @@
 import axios from "axios";
-import { useQuery } from "react-query";
 
-const fetchCountry = async (countryId) => {
+const fetchCountry = async (countryId: string) => {
   return axios
     .get(`https://restcountries.com/v2/name/${countryId}?fullText=true`)
     .then((res) => res.data);
 };
 
 const useCountry = () => {
-  return useQuery("country", fetchCountry);
+  return fetchCountry
+  // return useQuery("country", fetchCountry);
 };
 
 export default useCountry;

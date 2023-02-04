@@ -1,16 +1,16 @@
-import { createContext, useState } from 'react';
+import { ReactNode, createContext, useState } from 'react';
 
-export const ColorSchemeContext = createContext();
+export const ColorSchemeContext = createContext<{isDark: boolean; toggle: () => void}>({isDark: false, toggle: () => {}});
 
-export const ColorSchemeProvider = ({ children }) => {
-  const [isDark, setIsDark] = useState('light');
+export const ColorSchemeProvider = ({ children }: { children: ReactNode }) => {
+  const [isDark, setIsDark] = useState(false);
 
-  const handleIsDark = () => {
-    setIsDark((prevState) => !prevState);
+  const toggle = () => {
+    setIsDark(!isDark);
   };
 
   return (
-    <ColorSchemeContext.Provider value={{ isDark, handleIsDark }}>
+    <ColorSchemeContext.Provider value={{ isDark, toggle }}>
       {children}
     </ColorSchemeContext.Provider>
   );

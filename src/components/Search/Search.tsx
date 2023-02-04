@@ -1,7 +1,7 @@
 import React from "react";
 import "./Search.css";
 
-const Search = ({ search, handleChange, isDark, resetRegionFilter }) => {
+const Search = ({ search, handleChange, isDark, resetRegionFilter }: {search: any, handleChange: any, isDark: boolean, resetRegionFilter: any}) => {
   return (
     <div className="search-container">
       <div className={isDark ? "dark-search-item search-item" : "search-item"}>

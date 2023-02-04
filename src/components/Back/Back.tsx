@@ -4,7 +4,7 @@ import { BsArrowLeft } from "react-icons/bs";
 
 import "./Back.css";
 
-const Back = ({ isDark }) => {
+const Back = ({ isDark }: {isDark: boolean}) => {
 	return (
 		<Link to="/">
 			<button className={isDark ? `dark-back back` : `back`}>
