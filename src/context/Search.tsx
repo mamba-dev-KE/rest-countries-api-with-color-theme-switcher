@@ -8,8 +8,8 @@ export const SearchContext = createContext<{
 export const SearchProvider = ({ children }: { children: ReactNode }) => {
   const [search, setSearch] = useState<string>('');
 
-  const onChange = (e: ChangeEvent) => {
-    setSearch(e.currentTarget.value as string);
+  const onChange = (e: any) => {
+    setSearch(e.currentTarget.value);
   };
 
   return (
