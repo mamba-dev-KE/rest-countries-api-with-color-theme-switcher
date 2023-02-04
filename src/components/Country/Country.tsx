@@ -1,12 +1,15 @@
 import { Search, CountryItem } from '..';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCountries, useDarkMode } from 'hooks';
-import './Country.css';
 import { ChangeEvent, useState } from 'react';
+import './Country.css';
 
 const Country = () => {
   /* Unified state to manage both searching by name and filtering by region */
-  const [search, setSearch] = useState({
+  const [search, setSearch] = useState<{
+    searchTerm: string;
+    filterTerm: string;
+  }>({
     searchTerm: '',
     filterTerm: '',
   });
@@ -14,17 +17,17 @@ const Country = () => {
   const { isDark } = useDarkMode();
   const { data: countries } = useCountries();
 
-  const handleChange = (event: ChangeEvent | any ) => {
+  const handleChange = (event: ChangeEvent | any) => {
     const { name, value } = event.target;
 
-    setSearch((prevState: {searchTerm:string, filterTerm:string}) => ({
+    setSearch((prevState: { searchTerm: string; filterTerm: string }) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
   const resetRegionFilter = () => {
-    setSearch((prevState: {searchTerm:string, filterTerm:string}) => ({
+    setSearch((prevState: { searchTerm: string; filterTerm: string }) => ({
       ...prevState,
       filterTerm: '',
     }));
@@ -40,11 +43,11 @@ const Country = () => {
   );
 
   const searchedCountries = filteredCountries?.map((country) => {
-    return <CountryItem country={country} key={country.numericCode} />;
+    return <CountryItem key={country.numericCode} country={country} />;
   });
 
   const countriesByRegion = regionCountries?.map((country) => {
-    return <CountryItem country={country} />;
+    return <CountryItem key={country.numericCode} country={country} />;
   });
 
   return (
