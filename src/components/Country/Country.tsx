@@ -52,9 +52,9 @@ const Country = () => {
   return (
     <>
       <Search
-        search={search}
-        handleChange={handleChange}
-        resetRegionFilter={resetRegionFilter}
+        // search={search}
+        // handleChange={handleChange}
+        // resetRegionFilter={resetRegionFilter}
       />
       <motion.div className="countries">
         <AnimatePresence>

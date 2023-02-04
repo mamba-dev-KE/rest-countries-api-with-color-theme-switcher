@@ -1,19 +1,11 @@
 import { useDarkMode } from 'hooks';
 import './Search.css';
 
-const Search = ({
-  search,
-  handleChange,
-  resetRegionFilter,
-}: {
-  search: any;
-  handleChange: any;
-  resetRegionFilter: any;
-}) => {
+const Search = () => {
   const { isDark } = useDarkMode();
   return (
     <div className="search-container">
-      <div className={isDark ? 'dark-search-item search-item' : 'search-item'}>
+      {/* <div className={isDark ? 'dark-search-item search-item' : 'search-item'}>
         <i className="fas fa-search"></i>
         <input
           type="search"
@@ -50,7 +42,8 @@ const Search = ({
             Clear Region Filter
           </button>
         )}
-      </div>
+      </div> */}
+      search
     </div>
   );
 };
