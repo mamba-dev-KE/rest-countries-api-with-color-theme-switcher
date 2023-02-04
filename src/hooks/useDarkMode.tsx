@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ColorSchemeContext } from 'context/context';
+import { ColorSchemeContext } from 'context';
 
 const useDarkMode = () => useContext(ColorSchemeContext);
 

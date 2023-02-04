@@ -1,17 +1,25 @@
-import React from "react";
-import "./Search.css";
-
-const Search = ({ search, handleChange, isDark, resetRegionFilter }: {search: any, handleChange: any, isDark: boolean, resetRegionFilter: any}) => {
+import './Search.css';
+const Search = ({
+  search,
+  handleChange,
+  isDark,
+  resetRegionFilter,
+}: {
+  search: any;
+  handleChange: any;
+  isDark: boolean;
+  resetRegionFilter: any;
+}) => {
   return (
     <div className="search-container">
-      <div className={isDark ? "dark-search-item search-item" : "search-item"}>
+      <div className={isDark ? 'dark-search-item search-item' : 'search-item'}>
         <i className="fas fa-search"></i>
         <input
           type="search"
           name="searchTerm"
           value={search.searchTerm}
           onChange={handleChange}
-          className={isDark ? "dark-search search" : "search"}
+          className={isDark ? 'dark-search search' : 'search'}
           placeholder="Search for a country..."
         />
       </div>
@@ -20,7 +28,7 @@ const Search = ({ search, handleChange, isDark, resetRegionFilter }: {search: an
           name="filterTerm"
           value={search.filterTerm}
           onChange={handleChange}
-          className={isDark ? "dark-filter filter" : "filter"}
+          className={isDark ? 'dark-filter filter' : 'filter'}
         >
           <option className="option">Filter by Region</option>
           <option>Africa</option>
@@ -34,8 +42,8 @@ const Search = ({ search, handleChange, isDark, resetRegionFilter }: {search: an
             onClick={resetRegionFilter}
             className={
               isDark
-                ? "clear-filter-btn dark-clear-filter-btn"
-                : "clear-filter-btn"
+                ? 'clear-filter-btn dark-clear-filter-btn'
+                : 'clear-filter-btn'
             }
           >
             Clear Region Filter

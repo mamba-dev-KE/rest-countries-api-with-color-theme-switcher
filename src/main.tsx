@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { ColorSchemeProvider } from 'context/context';
+import { ColorSchemeProvider } from 'context';
 import App from './App';
 import './index.css';
 

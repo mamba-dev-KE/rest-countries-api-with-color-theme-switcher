@@ -1,34 +1,34 @@
 import { Search, CountryItem } from '..';
-import { ChangeEvent, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCountries, useDarkMode } from 'hooks';
 import './Country.css';
+import { ChangeEvent, useState } from 'react';
 
 const Country = () => {
   /* Unified state to manage both searching by name and filtering by region */
-  // const [search, setSearch] = useState({
-  //   searchTerm: '',
-  //   filterTerm: '',
-  // });
+  const [search, setSearch] = useState({
+    searchTerm: '',
+    filterTerm: '',
+  });
 
   const { isDark } = useDarkMode();
-  const { data:countries } = useCountries();
+  const { data: countries } = useCountries();
 
-  // const handleChange = (event: ChangeEvent) => {
-  //   const { name, value } = event.target;
+  const handleChange = (event: ChangeEvent | any ) => {
+    const { name, value } = event.target;
 
-  //   setSearch((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // };
+    setSearch((prevState: {searchTerm:string, filterTerm:string}) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-  // const resetRegionFilter = () => {
-  //   setSearch((prevState) => ({
-  //     ...prevState,
-  //     filterTerm: '',
-  //   }));
-  // };
+  const resetRegionFilter = () => {
+    setSearch((prevState: {searchTerm:string, filterTerm:string}) => ({
+      ...prevState,
+      filterTerm: '',
+    }));
+  };
 
   /* Logic for searching for countries by name and returning a new array  of countries that meet condition */
   const filteredCountries = countries?.filter((country) =>
