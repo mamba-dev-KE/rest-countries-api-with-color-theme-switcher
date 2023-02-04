@@ -5,7 +5,8 @@ import { Back } from "../../components";
 
 const CountryDetails = ({ countries, isDark }) => {
   const [currentCountry, setCurrentCountry] = useState([]);
-
+  const { isDark } = useContext(ColorSchemeContext);
+  const { data } = useCountries();
   const { id } = useParams();
 
   useEffect(() => {
@@ -42,7 +43,7 @@ const CountryDetails = ({ countries, isDark }) => {
           <img className="country-details-flag" src={item?.flags.svg} alt="" />
           <div
             className={
-              isDark ? "dark-country-info country-info" : "country-info"
+              isDark ? 'dark-country-info country-info' : 'country-info'
             }
           >
             <div className="wrapper">
@@ -73,7 +74,7 @@ const CountryDetails = ({ countries, isDark }) => {
                 <span>Currencies:</span> {item?.currencies[0].name}
               </li>
               <li>
-                <span>Languages:</span> {languages?.join(", ")}
+                <span>Languages:</span> {languages?.join(', ')}
               </li>
             </ul>
           </div>

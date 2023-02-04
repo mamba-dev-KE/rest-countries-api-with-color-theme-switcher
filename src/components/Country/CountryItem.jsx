@@ -1,11 +1,13 @@
-import React from "react";
-import { motion } from "framer-motion";
+import { useContext } from 'react';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
+import { ColorSchemeContext } from '../../context/context.jsx';
+import CountryStats from './CountryStats.jsx';
 
-import CountryStats from "./CountryStats.jsx";
-import { useNavigate } from "react-router-dom";
-
-const CountryItem = ({ isDark, country }) => {
+const CountryItem = ({ country }) => {
   const navigate = useNavigate();
+  const { isDark } = useContext(ColorSchemeContext);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

@@ -1,40 +1,40 @@
-import { useState } from "react";
-import { Routes, Route } from "react-router-dom";
-import { useCountries } from "./hooks";
-import { Header, Country, CountryDetails } from "./components";
-import NotFound from "./pages/NotFound/NotFound";
+import { useContext } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { useCountries } from './hooks';
+import { ColorSchemeContext } from './context/context';
+import { Header, Country, CountryDetails, NotFound } from './components';
 
 const App = () => {
-  const { isLoading, error, data: countries } = useCountries();
-  const [isDark, setIsDark] = useState(false);
+  const { isLoading, isError, error } = useCountries();
+  const { isDark } = useContext(ColorSchemeContext);
 
-  const handleIsDark = () => {
-    setIsDark((prevState) => !prevState);
-  };
+  if (isLoading)
+    return (
+      <main id="main" className={isDark ? `dark-content main` : `main`}>
+        <div style={{ textAlign: 'center', fontSize: '2rem', color: 'tomato' }}>
+          loading...
+        </div>
+      </main>
+    );
 
-  if (isLoading) {
-    return <div style={{ textAlign: "center" }}>loading...</div>;
-  }
-
-  if (error) {
-    return <div>error...</div>;
-  }
+  if (isError)
+    return (
+      <main id="main" className={isDark ? `dark-content main` : `main`}>
+        <div style={{ textAlign: 'center', fontSize: '2rem', color: 'red' }}>
+          {error.message}
+        </div>
+      </main>
+    );
 
   return (
     <>
-      <Header isDark={isDark} handleIsDark={handleIsDark} />
+      <Header />
       <main id="main" className={isDark ? `dark-content main` : `main`}>
         <div className={isDark ? `dark-container container` : `container`}>
           <Routes>
-            <Route
-              path="/"
-              element={<Country countries={countries} isDark={isDark} />}
-            ></Route>
-            <Route
-              path="/country/:id"
-              element={<CountryDetails countries={countries} isDark={isDark} />}
-            />
-            <Route path="*" element={<NotFound isDark={isDark} />} />
+            <Route path="/" element={<Country />} />
+            <Route path="/country/:id" element={<CountryDetails />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
         <a href="#main" className="scroll-up">
