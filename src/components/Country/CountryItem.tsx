@@ -13,7 +13,6 @@ const CountryItem = ({ country }: { country: Country }) => {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      layout
       className={isDark ? `dark-country country` : `country`}
       onClick={() => navigate(`/country/${country.name.toLowerCase()}`)}
     >

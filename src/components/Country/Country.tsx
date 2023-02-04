@@ -55,10 +55,9 @@ const Country = () => {
       <Search
         search={search}
         handleChange={handleChange}
-        isDark={isDark}
         resetRegionFilter={resetRegionFilter}
       />
-      <motion.div layout className="countries">
+      <motion.div className="countries">
         <AnimatePresence>
           {search.filterTerm === '' ? searchedCountries : countriesByRegion}
         </AnimatePresence>
