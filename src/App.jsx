@@ -1,12 +1,11 @@
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import { useCountries } from "./hooks";
 import { Header, Country, CountryDetails } from "./components";
 import NotFound from "./pages/NotFound/NotFound";
 
-import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
-import { useCountries } from "./hooks";
-
 const App = () => {
-  const { isLoading, error, data } = useCountries();
+  const { isLoading, error, data: countries } = useCountries();
   const [isDark, setIsDark] = useState(false);
 
   const handleIsDark = () => {
@@ -29,11 +28,11 @@ const App = () => {
           <Routes>
             <Route
               path="/"
-              element={<Country data={data} isDark={isDark} />}
+              element={<Country countries={countries} isDark={isDark} />}
             ></Route>
             <Route
               path="/country/:id"
-              element={<CountryDetails data={data} isDark={isDark} />}
+              element={<CountryDetails countries={countries} isDark={isDark} />}
             />
             <Route path="*" element={<NotFound isDark={isDark} />} />
           </Routes>

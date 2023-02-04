@@ -4,7 +4,7 @@ import "./Country.css";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const Country = ({ data, isDark }) => {
+const Country = ({ countries, isDark }) => {
   /* Unified state to manage both searching by name and filtering by region */
   const [search, setSearch] = useState({
     searchTerm: "",
@@ -29,11 +29,11 @@ const Country = ({ data, isDark }) => {
   };
 
   /* Logic for searching for countries by name and returning a new array  of countries that meet condition */
-  const filteredCountries = data?.filter((country) =>
+  const filteredCountries = countries?.filter((country) =>
     country.name.toLowerCase().includes(search.searchTerm.toLowerCase())
   );
   //* Logic for filtering countries by region and returning a new array  of countries that meet condition */
-  const regionCountries = data?.filter((country) =>
+  const regionCountries = countries?.filter((country) =>
     country.region.toLowerCase().includes(search.filterTerm.toLowerCase())
   );
 

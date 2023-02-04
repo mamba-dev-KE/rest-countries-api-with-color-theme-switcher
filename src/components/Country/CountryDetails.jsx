@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import Back from "../Back/Back";
+import axios from "axios";
+import { Back } from "../../components";
 
-const CountryDetails = ({ data, isDark }) => {
+const CountryDetails = ({ countries, isDark }) => {
   const [currentCountry, setCurrentCountry] = useState([]);
 
   const { id } = useParams();
@@ -22,7 +22,7 @@ const CountryDetails = ({ data, isDark }) => {
     const languages = item?.languages.map((language) => language.name);
     const borderCountries = item?.borders.map((borderCountry) => {
       const borderCodes = borderCountry;
-      const neighborCountries = data?.filter(
+      const neighborCountries = countries?.filter(
         (country) =>
           country.alpha3Code.toLowerCase() === borderCodes.toLowerCase()
       );
