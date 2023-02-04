@@ -1,8 +1,5 @@
 import axios from 'axios';
-
-const fetchCountries = async () => {
-  return axios.get(`https://restcountries.com/v2/all`).then((res) => res.data);
-};
+import useSWR from 'swr'
 
 const useCountries = () => {
   const API_URL = import.meta.env.VITE_API_URL;
@@ -10,9 +7,9 @@ const useCountries = () => {
   const fetchCountries = async () =>
     axios.get(`${API_URL}`).then((res) => res.data);
 
-    return fetchCountries
-
-  // return useQuery(['countries'], fetchCountries);
+  return useSWR('/countries/all', fetchCountries, {
+    suspense: true
+  });
 };
 
 export default useCountries;
