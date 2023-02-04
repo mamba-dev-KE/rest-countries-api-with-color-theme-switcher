@@ -1,8 +1,20 @@
 import { useContext } from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { useCountries } from './hooks';
+import { Route, RouterProvider } from 'react-router-dom';
+import { useCountries } from 'hooks';
 import { ColorSchemeContext } from './context/context';
-import { Header, Country, CountryDetails, NotFound } from './components';
+import { Header, Country, CountryDetails, NotFound } from 'components';
+import { createBrowserRouter, createRoutesFromElements } from 'react-router-dom';
+
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route>
+    <Route path="/" element={<Country />} />
+    <Route path="/country/:id" element={<CountryDetails />} />
+    <Route path="*" element={<NotFound />} />
+  </Route>
+  )
+)
 
 const App = () => {
   const { isLoading, isError, error } = useCountries();
@@ -31,11 +43,7 @@ const App = () => {
       <Header />
       <main id="main" className={isDark ? `dark-content main` : `main`}>
         <div className={isDark ? `dark-container container` : `container`}>
-          <Routes>
-            <Route path="/" element={<Country />} />
-            <Route path="/country/:id" element={<CountryDetails />} />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
+         <RouterProvider router={router} />
         </div>
         <a href="#main" className="scroll-up">
           <i
