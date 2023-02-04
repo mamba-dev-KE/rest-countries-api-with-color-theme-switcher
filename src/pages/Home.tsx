@@ -1,7 +1,11 @@
+import CountryList from 'components/Country/CountryList';
+
 const Home = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <div>
+      <CountryList />
+    </div>
+  );
+};
 
-export default Home
+export default Home;

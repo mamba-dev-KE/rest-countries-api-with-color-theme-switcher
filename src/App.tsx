@@ -1,7 +1,7 @@
 import { Suspense, useContext } from 'react';
 import { Route, RouterProvider } from 'react-router-dom';
 import { useCountries } from 'hooks';
-import { ColorSchemeContext } from './context/context';
+import { ColorSchemeContext } from './context/ColorScheme';
 import { Header, Country, CountryDetails, NotFound } from 'components';
 import {
   createBrowserRouter,
